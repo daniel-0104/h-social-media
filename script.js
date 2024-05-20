@@ -574,29 +574,100 @@ else if(currentHTML === 'pageVideo'){
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         },
+        on: {
+            slideChange: function() {
+                // Stop all videos
+                this.slides.forEach(function(slide) {
+                    var video = slide.querySelector('video');
+                    if (video) {
+                        video.pause();
+                    }
+                });
+
+                // Play the video in the active slide
+                var activeSlide = this.slides[this.activeIndex];
+                var videoElement = activeSlide.querySelector('video');
+                if (videoElement) {
+                    videoElement.play();
+                }
+            },
+        },
     });
 
-    // video onclick event 
-    var videoClick = document.querySelectorAll('#vide-page-eg video');
-    var videoSwiperView = document.getElementById('video-swiper');
-    var swiperVideo = document.getElementById('01-video');
-    var swiperVideo2 = document.getElementById('02-video');
+     // Video click event
+     var videoElements = document.querySelectorAll('#vide-page-eg video');
+     var videoSwiperView = document.getElementById('video-swiper');
 
+     videoElements.forEach(function(video) {
+         video.addEventListener('click', function() {
+             // Show Swiper
+             videoSwiperView.style.display = 'block';
 
+             // Clear existing slides
+             swiper.removeAllSlides();
 
-    function displayVideoSrc(source){
-        swiperVideo.style.display = 'block';
-        swiperVideo.src = source;
-        swiperVideo.play();
+             // Add clicked video as the first slide and autoplay it
+             swiper.appendSlide(`
+                <div class="swiper-slide">
+                    <div id="swiper-arrow">
+                        <i class="fa-solid fa-arrow-left-long"></i>
+                    </div>
+                    <div id="swiper-slide-content">
+                        <div id="carousel-header">
+                            <a href="">
+                                <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="">
+                                <h6>Bai Lu</h6>
+                            </a>
+                        </div>
+                        <video src="${video.src}"></video>
+                    </div>
+                 </div>
+             `);
 
-        // swiperVideo2.play();
-    }
+             // Add remaining videos to the Swiper
+             videoElements.forEach(function(v) {
+                 if (v.src !== video.src) {
+                     swiper.appendSlide(`
+                         <div class="swiper-slide">
+                            <div id="swiper-arrow">
+                                <i class="fa-solid fa-arrow-left-long"></i>
+                            </div>
+                            <div id="swiper-slide-content">
+                                <div id="carousel-header">
+                                    <a href="">
+                                        <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="">
+                                        <h6>Bai Lu</h6>
+                                    </a>
+                                </div>
+                                <video src="${v.src}"></video>
+                            </div>
+                         </div>
+                     `);
+                 }
+             });
 
-    videoClick.forEach(function(video){
-        video.addEventListener('click',function(){
-            videoSwiperView.style.display = 'block';
-            displayVideoSrc(this.src);
-        });
+             // Update Swiper
+             swiper.update();
+
+             // Autoplay the first video
+             var firstVideo = swiper.slides[0].querySelector('video');
+             if (firstVideo) {
+                firstVideo.play();
+             }
+         });
+     });
+     // Add click event listener to play/pause videos
+     document.body.addEventListener('click', function(event) {
+        if (event.target.tagName === 'VIDEO') {
+            var video = event.target;
+            if (video.paused) {
+                video.play();
+                video.muted = false;
+            } else {
+                video.pause();
+                video.muted = true;
+            }
+        }
     });
 
 }
