@@ -581,6 +581,8 @@ else if(currentHTML === 'pageVideo'){
                     var video = slide.querySelector('video');
                     if (video) {
                         video.pause();
+                        video.currentTime = 0;
+                        video.muted = false;
                     }
                 });
 
@@ -656,19 +658,35 @@ else if(currentHTML === 'pageVideo'){
              }
          });
      });
-     // Add click event listener to play/pause videos
-     document.body.addEventListener('click', function(event) {
-        if (event.target.tagName === 'VIDEO') {
-            var video = event.target;
-            if (video.paused) {
+
+    // Add click event listener to play/pause videos
+document.body.addEventListener('click', function(event) {
+    if (event.target.tagName === 'VIDEO') {
+        var clickedVideo = event.target;
+        var videos = document.querySelectorAll('video');
+        
+        // Pause and mute all videos except the clicked one
+        videos.forEach(function(video) {
+            if (video !== clickedVideo) {
                 video.play();
-                video.muted = false;
-            } else {
-                video.pause();
                 video.muted = true;
             }
+            else{
+                video.currentTime = 0;
+                // video.muted = false;
+            }
+        });
+        
+        // Toggle play/pause for the clicked video
+        if (clickedVideo.paused) {
+            clickedVideo.play();
+            clickedVideo.muted = false;
+        } else {
+            clickedVideo.pause();
+            clickedVideo.muted = true;
         }
-    });
+    }
+});
 
 }
 
