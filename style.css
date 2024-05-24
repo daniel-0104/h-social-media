@@ -162,6 +162,9 @@ body{
     #b-nav-liked ~ label{
         color: var(--blue-tint);
     }
+    .main-content{
+        margin-bottom: 50px;
+    }
 }
 @media screen and (max-width: 520px){
     #b-nav-liked ~ label{
@@ -340,6 +343,7 @@ body{
     }
     #story-swiper-ph{
         display: block !important;
+        margin-bottom: -20px;
     }
 }
 /* .............. new feed , shortcut start .............. */
@@ -672,7 +676,7 @@ body{
 
 /* .............. create post start .............. */
 .create-post{
-    margin: 30px 0;
+    margin-top: 20px;
     padding: 20px 20px 0;
     background-color: var(--grey);
 }
@@ -760,8 +764,8 @@ body{
 .user-post,
 .user-post-saved{
     display: block;
-    margin: 30px 0;
-    padding: 20px 20px 16px;
+    margin-top: 25px;
+    padding: 20px 20px 5px;
     background-color: var(--grey);
     border-radius: 10px;
 }
@@ -801,12 +805,20 @@ body{
     position: relative;
     height: auto;
     margin: auto;
+    padding: 8px 0;
 }
-#profile-img > div > img,
+#profile-img > div > img{
+    display: block;
+    margin: auto;
+    width: auto;
+    height: 430px;
+}
 #profile-img > div > video{
     display: block;
     margin: auto;
-    width: 50%;
+    width: auto;
+    height: 460px;
+    object-fit: cover;
 }
 .slide-number{
     position: absolute;
@@ -818,10 +830,8 @@ body{
     border-radius: 5px;
     font-size: 14px;
 }
-@media screen and (max-width: 650px){
-    #profile-img > div > img{
-        width: 75%;
-    }
+.profile-like{
+    margin-top: -10px;
 }
 .profile-like > div{
     display: flex;
@@ -846,6 +856,13 @@ body{
 .bookmark-yellow{
     color: #fcbb39;
 }
+@media screen and (max-width: 831px){
+    .user-post{
+        display: block;
+        margin: 30px auto 0;
+        width: 95%;
+    }
+}
 @media screen and (min-width: 629px) and (max-width: 670px){
     #users-profile-content{
         display: block;
@@ -867,9 +884,6 @@ body{
 @media screen and (max-width: 587px){
     .heart-comment,.bookmark{
         font-size: 15pt;
-    }
-    .users-profile{
-        display: flex;
     }
     .users-profile > div > a > img{
         display: block;
@@ -1791,21 +1805,55 @@ body{
 /* ......................... video page end ............................ */
 
 /* .............................setting page start ....................*/
-#setting{
+#setting,
+#common-help{
     margin-top: 20px;
     border: 1px solid black;
     padding: 20px;
     border-radius: 10px;
 }
 #setting-content a{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     text-decoration: none;
     color: black;
-    margin: 15px 0;
-    padding-left: 20px;
+    margin: 10px 0;
+    padding: 0 30px;
+    border-radius: 5px;
 }
 #setting-content a:hover{
+    background-color: var(--blue-tint);
+}
+#help-content a{
+    display: block;
     color: var(--blue);
+    margin: 20px 0;
+    padding-left: 30px;
+}
+#more-help{
+    background-color: var(--noti-bg);
+    margin-top: 20px;
+    padding: 25px 20px;
+    border-radius: 10px;
+    color: white;
+}
+#more-help h6{
+    color: var(--blue-tint);
+}
+#more-help button{
+    color: var(--blue-tint);
+    border: 1px solid var(--blue-tint);
+    margin-top: 25px;
+}
+#more-help button:hover{
+    background-color: var(--blue-tint);
+    color: white;
+}
+@media screen and (max-width: 576px){
+    #more-help > .col-lg-4{
+        margin-bottom: 25px;
+    }
 }
 /* .............................setting page end ....................*/
 
