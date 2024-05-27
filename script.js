@@ -725,6 +725,13 @@ document.body.addEventListener('click', function(event) {
 });
 
 }
+else if(currentHTML === 'pageMessage'){
+    $(document).ready(function(){
+        $('#m-search-icon').click(function(){
+            $('#message-search').toggle('slow');
+        });
+    });
+}
 
 //............................................user post image swipe start..............................
 var swipers = [];

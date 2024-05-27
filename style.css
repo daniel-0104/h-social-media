@@ -1873,5 +1873,70 @@ body{
 /* .............................setting page end ....................*/
 
   
+/* ............................message page start ....................*/
+#message-body{
+    overflow-y: hidden;
+}
+.chat-message{
+    padding: 20px 20px 10px;
+    border-radius: 10px;
+    background-color: var(--grey);
+}
+.chat-message .mt-4{
+    height: 30%;
+    overflow-y: auto;
+}
+#message-search{
+    display: none;
+}
+#message-search input{
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid var(--noti-bg);
+    background-color: #e7e7e7;
+}
+#message-search input:focus{
+    box-shadow: none;
+    outline: 0;
+}
+.message-content{
+    text-decoration: none;
+    color: black;
+}
+.message-content:hover{
+    cursor: pointer;
+}
+.message-content img{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.message-content-text > p{
+    font-size: 11pt;
+    width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.message-content-text > label{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    color: white;
+    margin-top: -12px;
+    width: 14px;
+    height: 14px;
+    border-radius: 20px;
+}
+.message-content-text span{
+    position: absolute;
+}
+/* ............................message page end ....................*/
 
   
