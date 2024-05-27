@@ -19,8 +19,8 @@ const homeItem = document.querySelectorAll('.home-item');
 const homeText = document.querySelectorAll('.home-text');
 const notiBg = document.querySelectorAll('.noti-bg');
 const loaderBg = document.querySelectorAll('.loader-bg');
-const toggleSwitch = document.querySelector('.toggle-switch-background');
-const toggleCheckbox = document.querySelector('.toggle-switch input[type="checkbox"]');
+const toggleSwitch = document.querySelectorAll('.toggle-switch-background');
+const toggleCheckbox = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
 
 // Check if dark mode preference is stored in localStorage
 const isDarkMode = localStorage.getItem('darkMode') === 'true';
@@ -28,39 +28,45 @@ const isDarkMode = localStorage.getItem('darkMode') === 'true';
 // Set initial dark mode state based on stored preference
 if (isDarkMode) {
     enableDarkMode();
-    toggleCheckbox.checked = true; // Check the switch button if dark mode is enabled
+    // toggleCheckbox.checked = true; // Check the switch button if dark mode is enabled
+    toggleCheckbox.forEach(checkbox => {
+        checkbox.checked = true; // Check the switch button if dark mode is enabled
+    });
 }
 
-toggleSwitch.onclick = () => {
-    // Toggle dark mode
-    body.classList.toggle('dark');
-    navBg.classList.toggle('nav-bg-dark');
-    buttonNav.classList.toggle('nav-bg-dark');
-    homeDark.forEach(element => {
-        element.classList.toggle('home-bg-dark');
+toggleSwitch.forEach(function(toggSwitch){
+    toggSwitch.addEventListener('click',function(){
+        // Toggle dark mode
+        body.classList.toggle('dark');
+        navBg.classList.toggle('nav-bg-dark');
+        buttonNav.classList.toggle('nav-bg-dark');
+        homeDark.forEach(element => {
+            element.classList.toggle('home-bg-dark');
+        });
+        homeText.forEach(element => {
+            element.classList.toggle('home-text-light');
+        });
+        notiBg.forEach(element => {
+            element.classList.toggle('noti-bg-blue');
+        });
+        loaderBg.forEach(element => {
+            element.classList.toggle('loader-bg-blue');
+        });
+    
+        const isDarkModeColor = body.classList.contains('dark');
+        homeItem.forEach(element => {
+            if (isDarkModeColor) {
+                element.style.color = 'white';
+            } else {
+                element.style.color = 'black';
+            }
+        });
+    
+        // Store dark mode preference in localStorage
+        localStorage.setItem('darkMode', isDarkModeColor.toString());
     });
-    homeText.forEach(element => {
-        element.classList.toggle('home-text-light');
-    });
-    notiBg.forEach(element => {
-        element.classList.toggle('noti-bg-blue');
-    });
-    loaderBg.forEach(element => {
-        element.classList.toggle('loader-bg-blue');
-    });
+});
 
-    const isDarkModeColor = body.classList.contains('dark');
-    homeItem.forEach(element => {
-        if (isDarkModeColor) {
-            element.style.color = 'white';
-        } else {
-            element.style.color = 'black';
-        }
-    });
-
-    // Store dark mode preference in localStorage
-    localStorage.setItem('darkMode', isDarkModeColor.toString());
-}
 
 function enableDarkMode() {
     body.classList.add('dark');
@@ -84,7 +90,37 @@ function enableDarkMode() {
 }
 // .......................   dark mode toggle end ...................................
 
+// toggleSwitch.onclick = () => {
+//     console.log('clicked');
+//     // Toggle dark mode
+//     body.classList.toggle('dark');
+//     navBg.classList.toggle('nav-bg-dark');
+//     buttonNav.classList.toggle('nav-bg-dark');
+//     homeDark.forEach(element => {
+//         element.classList.toggle('home-bg-dark');
+//     });
+//     homeText.forEach(element => {
+//         element.classList.toggle('home-text-light');
+//     });
+//     notiBg.forEach(element => {
+//         element.classList.toggle('noti-bg-blue');
+//     });
+//     loaderBg.forEach(element => {
+//         element.classList.toggle('loader-bg-blue');
+//     });
 
+//     const isDarkModeColor = body.classList.contains('dark');
+//     homeItem.forEach(element => {
+//         if (isDarkModeColor) {
+//             element.style.color = 'white';
+//         } else {
+//             element.style.color = 'black';
+//         }
+//     });
+
+//     // Store dark mode preference in localStorage
+//     localStorage.setItem('darkMode', isDarkModeColor.toString());
+// }
 
 if(currentHTML === 'pageIndex'){
     //................................ story swiper start ....................................

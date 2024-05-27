@@ -217,6 +217,17 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+#setting-dark-mode{
+    display: none;
+}
+#dark-mode-ph{
+    padding: 0 30px;
+}
+@media screen and (max-width: 831px){
+    #setting-dark-mode{
+        display: block !important;
+    }
+}
 .toggle-switch{
     position: relative;
     display: inline-block;
@@ -1809,7 +1820,7 @@ body{
 #common-help{
     margin-top: 20px;
     border: 1px solid black;
-    padding: 20px;
+    padding: 15px 20px 12px 20px;
     border-radius: 10px;
 }
 #setting-content a{
@@ -1822,8 +1833,12 @@ body{
     padding: 0 30px;
     border-radius: 5px;
 }
-#setting-content a:hover{
+#setting-content > a:hover{
     background-color: var(--blue-tint);
+}
+#setting-logout > h6{
+    color: red;
+    margin-bottom: -1px;
 }
 #help-content a{
     display: block;
