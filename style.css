@@ -1977,8 +1977,8 @@ body{
     background-color: var(--blue-tint);
     color: white;
     margin-top: -12px;
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 20px;
 }
 .message-content-text span{
@@ -1986,4 +1986,33 @@ body{
 }
 /* ............................message page end ....................*/
 
-  
+/* ............................ chatting page start ....................*/
+.chatting-back{
+    margin-right: 23px;
+}
+.chatting-back a{
+    color: black;
+}
+.online span{
+    content: '';
+    background-color: green;
+    height: 7px;
+    width: 7px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.online label{
+    font-size: 10pt;
+    color: #808080;
+}
+.chatting .dropdown-menu{
+    padding: 10px 0 0 15px;
+}
+.chatting .dropdown-menu li{
+    margin-bottom: 15px;
+}
+.chatting .dropdown-menu a{
+    color: black;
+    text-decoration: none;
+}
+/* ........................... chatting page end ....................*/
