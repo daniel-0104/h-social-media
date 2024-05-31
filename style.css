@@ -200,6 +200,11 @@ body{
 .dark .home-bg-dark{
     background-color: #21283b ;
 }
+.dark .left-dark::after{
+    background-color: #21283b ;
+    border-top: 1px solid #21283b;
+    border-left: 1px solid #21283b;
+}
 .dark .home-text-light{
     color: var(--text-gray);
 }
@@ -1892,7 +1897,6 @@ body{
     background-color: var(--blue);
     border-radius: 20px;
     width: 10px;
-
 }
 @media screen and (min-width: 739px) and (max-width: 1100px){
     .chat-message .mt-3{
@@ -2005,6 +2009,24 @@ body{
     font-size: 10pt;
     color: #808080;
 }
+
+#chatting-scroll{
+    overflow-y: auto;
+    height: 60%;
+    padding-right: 20px;
+}
+#chatting-scroll::-webkit-scrollbar{
+    width: 2px;
+}
+#chatting-scroll::-webkit-scrollbar-track{
+    background-color: gainsboro;
+    border-radius: 20px;
+}
+#chatting-scroll::-webkit-scrollbar-thumb{
+    background-color: var(--blue);
+    border-radius: 20px;
+    width: 10px;
+}
 .chatting .dropdown-menu{
     padding: 10px 0 0 15px;
 }
@@ -2015,4 +2037,84 @@ body{
     color: black;
     text-decoration: none;
 }
+#chatting-content{
+    padding: 10px 20px 10px 0;
+}
+#user-chatting-content{
+    padding: 10px 0 10px 20px;
+}
+.chatting-text{
+    display: flex;
+    margin-bottom: 4px;
+    justify-content: left;
+}
+.user-text{
+    display: flex;
+    margin-bottom: 4px;
+    justify-content: right;
+}
+.chatting-text .profile-pic{
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.square{
+    background-color: var(--grey);
+    padding: 10px 10px 10px 15px;
+    margin-left: 20px;
+    margin-bottom: 0;
+    position: relative;
+    width: fit-content;
+    display: block;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.square2{
+    background-color: var(--grey);
+    padding: 10px 15px 10px 10px;
+    margin-bottom: 0;
+    position: relative;
+    width: fit-content;
+    display: block;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.left::after{
+    content: '';
+    position: absolute;
+    background-color: var(--grey);
+    width: 15px;
+    height: 15px;
+    top: 30%;
+    left: -8px;
+    transform: rotate(-45deg);
+    border-top: 1px solid var(--grey);
+    border-left: 1px solid var(--grey);
+}
+.left2::after{
+    content: '';
+    position: absolute;
+    background-color: var(--grey);
+    width: 15px;
+    height: 15px;
+    top: 30%;
+    right: -8px;
+    transform: rotate(-45deg);
+    border-top: 1px solid var(--grey);
+    border-left: 1px solid var(--grey);
+}
+.chatting-text label,
+.user-text label{
+    margin-top: 4px;
+    width: 100%;
+    text-align: right;
+    font-size: 10pt;
+}
+.chatting-text label i,
+.user-text label i{
+    color: var(--blue);
+}
+  
 /* ........................... chatting page end ....................*/

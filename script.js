@@ -19,6 +19,8 @@ const homeItem = document.querySelectorAll('.home-item');
 const homeText = document.querySelectorAll('.home-text');
 const notiBg = document.querySelectorAll('.noti-bg');
 const loaderBg = document.querySelectorAll('.loader-bg');
+const chatLeftDark = document.querySelectorAll('.left');
+const chatLeftDark2 = document.querySelectorAll('.left2');
 const toggleSwitch = document.querySelectorAll('.toggle-switch-background');
 const toggleCheckbox = document.querySelectorAll('.toggle-switch input[type="checkbox"]');
 
@@ -51,6 +53,12 @@ toggleSwitch.forEach(function(toggSwitch){
         });
         loaderBg.forEach(element => {
             element.classList.toggle('loader-bg-blue');
+        });
+        chatLeftDark.forEach(element => {
+            element.classList.toggle('left-dark');
+        });
+        chatLeftDark2.forEach(element => {
+            element.classList.toggle('left-dark');
         });
     
         const isDarkModeColor = body.classList.contains('dark');
@@ -86,6 +94,12 @@ function enableDarkMode() {
     });
     loaderBg.forEach(element => {
         element.classList.add('loader-bg-blue');
+    });
+    chatLeftDark.forEach(element => {
+        element.classList.add('left-dark');
+    });
+    chatLeftDark2.forEach(element => {
+        element.classList.add('left-dark');
     });
 }
 // .......................   dark mode toggle end ...................................
