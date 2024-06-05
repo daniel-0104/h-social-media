@@ -1328,6 +1328,7 @@ body{
     overflow: hidden;
     margin-bottom: 20px;
     border: 2px solid var(--text-gray);
+    border-radius: 5px;
 }
 .post-image-only img{
     width: 100%;
@@ -2229,6 +2230,12 @@ body{
 /* ........................... chatting page end ....................*/
 
 /* ........................... saved page start ....................*/
+#saved-back > a{
+    color: black;
+}
+#saved-click{
+    margin-top: -8px;
+}
 .post-saved-table{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2242,6 +2249,7 @@ body{
     overflow: hidden;
     margin-bottom: 20px;
     border: 2px solid var(--text-gray);
+    border-radius: 5px;
 }
 .post-saved-table img{
     width: 100%;
