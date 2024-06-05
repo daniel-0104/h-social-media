@@ -30,7 +30,6 @@ const isDarkMode = localStorage.getItem('darkMode') === 'true';
 // Set initial dark mode state based on stored preference
 if (isDarkMode) {
     enableDarkMode();
-    // toggleCheckbox.checked = true; // Check the switch button if dark mode is enabled
     toggleCheckbox.forEach(checkbox => {
         checkbox.checked = true; // Check the switch button if dark mode is enabled
     });
@@ -137,6 +136,8 @@ function enableDarkMode() {
 // }
 
 if(currentHTML === 'pageIndex'){
+
+    initializeSwipers();
     //................................ story swiper start ....................................
 
     //swiper
@@ -434,23 +435,23 @@ if(currentHTML === 'pageIndex'){
     // .....................................  create post end...............................................
 }
 else if(currentHTML === 'pageProfile'){
+
+    initializeSwipers();
     //............................................ profile grip click start ....................................
     const profileGripLinks = document.querySelectorAll('#profile-grip li a');
     const userPost = document.getElementsByClassName('user-post');
     const imageOnly = document.getElementsByClassName('post-image-only');
     const privateSave = document.getElementsByClassName('private-save');
 
-    document.querySelector('.profile-grip-content[data-element-class="userPost"]').click();
-
-    // Function to save the user's click preference locally
-    function saveUserClickPreference(preference) {
-        localStorage.setItem('userClickPreference', preference);
-    }
-
-    // Function to load the user's click preference from local storage
-    function loadUserClickPreference() {
-        return localStorage.getItem('userClickPreference');
-    }
+    // document.querySelector('.profile-grip-content[data-element-class="userPost"]').click();
+    // // Function to save the user's click preference locally
+    // function saveUserClickPreference(preference) {
+    //     localStorage.setItem('userClickPreference', preference);
+    // }
+    // // Function to load the user's click preference from local storage
+    // function loadUserClickPreference() {
+    //     return localStorage.getItem('userClickPreference');
+    // }
 
     // Function to handle click events on profile grip links
     function handleClickEvent(event) {
@@ -461,6 +462,8 @@ else if(currentHTML === 'pageProfile'){
         if (clickedElement.classList.contains('profile-grip-active')) {
             return;
         }
+
+        localStorage.setItem('userClick',elementClass);
 
         for (let p of profileGripLinks) {
             p.classList.remove('profile-grip-active');
@@ -480,8 +483,7 @@ else if(currentHTML === 'pageProfile'){
             p.style.display = elementClass === 'privateSave' ? 'block' : 'none';
         }
 
-        // Save user's click preference locally
-        saveUserClickPreference(elementClass);
+        initializeSwipers();
     }
 
     // Add click event listener to each profile grip link
@@ -489,35 +491,79 @@ else if(currentHTML === 'pageProfile'){
         link.addEventListener('click', handleClickEvent);
     }
 
-
-    // Load user's click preference and apply the corresponding display settings
-    const savedPreference = loadUserClickPreference();
-    if (savedPreference) {
-        for (let link of profileGripLinks) {
-            if (link.dataset.elementClass === savedPreference) {
-                link.click(); // Simulate click event to apply saved preference
-                break;
+    document.addEventListener('DOMContentLoaded',function(){
+        const elementClassId = localStorage.getItem('userClick');
+        if(elementClassId){
+            for (let p of profileGripLinks) {
+                p.classList.remove('profile-grip-active');
+            }
+            if(elementClassId === 'userPost'){
+                profileGripLinks[0].classList.add('profile-grip-active');
+                for (let u of userPost) {
+                    u.style.display = 'block';
+                }
+                for (let i of imageOnly) {
+                    i.style.display = 'none';
+                }
+                for (let p of privateSave) {
+                    p.style.display = 'none';
+                }
+            }else if(elementClassId === 'imageOnly'){
+                profileGripLinks[1].classList.add('profile-grip-active');
+                for (let u of userPost) {
+                    u.style.display = 'none';
+                }
+                for (let i of imageOnly) {
+                    i.style.display = 'grid';
+                }
+                for (let p of privateSave) {
+                    p.style.display = 'none';
+                }
+            }else if(elementClassId === 'privateSave'){
+                profileGripLinks[2].classList.add('profile-grip-active');
+                for (let u of userPost) {
+                    u.style.display = 'none';
+                }
+                for (let i of imageOnly) {
+                    i.style.display = 'none';
+                }
+                for (let p of privateSave) {
+                    p.style.display = 'block';
+                }
             }
         }
-    }
-
-    // Function to reload the page with a time delay after showing loading animation and hiding user-profile-grip
-    function reloadPageWithDelay(delay) {
-        document.querySelector('.loader').style.display = 'block';
-        document.querySelector('.user-profile-grip').style.display = 'none';
-
-        setTimeout(function() {
-            location.reload();
-        }, delay);
-    }
-
-    // Add click event listener to anchor tags to reload the page with delay
-    document.querySelectorAll('#profile-grip a').forEach(anchor => {
-        anchor.addEventListener('click', function(event) {
-            event.preventDefault();
-            reloadPageWithDelay(500);
-        });
+        initializeSwipers();
     });
+
+
+    // // Load user's click preference and apply the corresponding display settings
+    // const savedPreference = loadUserClickPreference();
+    // if (savedPreference) {
+    //     for (let link of profileGripLinks) {
+    //         if (link.dataset.elementClass === savedPreference) {
+    //             link.click(); // Simulate click event to apply saved preference
+    //             break;
+    //         }
+    //     }
+    // }
+
+    // // Function to reload the page with a time delay after showing loading animation and hiding user-profile-grip
+    // function reloadPageWithDelay(delay) {
+    //     document.querySelector('.loader').style.display = 'block';
+    //     document.querySelector('.user-profile-grip').style.display = 'none';
+
+    //     setTimeout(function() {
+    //         location.reload();
+    //     }, delay);
+    // }
+
+    // // Add click event listener to anchor tags to reload the page with delay
+    // document.querySelectorAll('#profile-grip a').forEach(anchor => {
+    //     anchor.addEventListener('click', function(event) {
+    //         event.preventDefault();
+    //         reloadPageWithDelay(500);
+    //     });
+    // });
 
     //............................................ profile grip click end ...................................
 
@@ -746,53 +792,117 @@ else if(currentHTML === 'pageMessage'){
         });
     });
 }
+else if(currentHTML === 'pageSaved'){
+    let savedContent = document.getElementsByClassName('saved-grip-content');
+    const savedTable = document.getElementsByClassName('post-saved-table');
+    const savedRow = document.getElementsByClassName('post-saved-row');
 
-//............................................user post image swipe start..............................
-var swipers = [];
-var profileSwipers = document.querySelectorAll('.profileSwiper');
 
-profileSwipers.forEach(function(element) {
-    var swiper = new Swiper(element, {
-        spaceBetween: 30,
-        hashNavigation: {
-            watchState: true,
-        },
-        pagination: {
-            el: element.querySelector(".swiper-pagination"),
-            clickable: true,
-        },
-        on: {
-            slideChange: function () {
-                updateSlideNumbers(swiper);
+    function savedClick(event){
+        event.preventDefault();
+        const clickSaved = event.target.tagName === 'I' ? event.target.parentElement : event.target;
+        const savedElement = clickSaved.dataset.elementClass;
+
+        if(clickSaved.classList.contains('saved-grip-active')){
+            return;
+        }
+
+        localStorage.setItem('savedId',savedElement);
+
+        for(let s of savedContent){
+            s.classList.remove('saved-grip-active');
+        }
+        clickSaved.classList.add('saved-grip-active');
+
+        for(let t of savedTable){
+            t.style.display = savedElement === 'savedTable' ? 'grid' : 'none';
+        }
+        for(let r of savedRow){
+            r.style.display = savedElement === 'savedRow' ? 'block' : 'none';
+        }
+
+        initializeSwipers();
+    }
+
+    // Add click event listener to each profile grip link
+    for (let sc of savedContent) {
+        sc.addEventListener('click', savedClick);
+    }
+
+    // Check localStorage for savedId and apply the state after reload
+    document.addEventListener('DOMContentLoaded', function () {
+        const savedId = localStorage.getItem('savedId');
+        if (savedId) {
+            for (let s of savedContent) {
+                s.classList.remove('saved-grip-active');
             }
-        },
-    });
-    swipers.push(swiper);
-});
-
-// Function to update slide numbers
-function updateSlideNumbers(swiperInstance) {
-    if (swiperInstance && swiperInstance.slides && swiperInstance.activeIndex !== undefined) {
-        const slides = swiperInstance.slides;
-        const currentSlideIndex = swiperInstance.activeIndex + 1;
-        
-        for (let i = 0; i < slides.length; i++) {
-            const slideNumberElement = slides[i].querySelector('.slide-number');
-            if (slideNumberElement) {
-                slideNumberElement.textContent = currentSlideIndex + '/' + slides.length;
+            if (savedId === 'savedTable') {
+                savedContent[0].classList.add('saved-grip-active');
+                for (let t of savedTable) {
+                    t.style.display = 'grid';
+                }
+                for (let r of savedRow) {
+                    r.style.display = 'none';
+                }
+            } else if (savedId === 'savedRow') {
+                savedContent[1].classList.add('saved-grip-active');
+                for (let t of savedTable) {
+                    t.style.display = 'none';
+                }
+                for (let r of savedRow) {
+                    r.style.display = 'block';
+                }
             }
         }
-    } else {
-        console.error("Swiper instance or slides are undefined.");
-    }
-}
-swipers.forEach(updateSlideNumbers);
+        initializeSwipers();
+    });
 
-// Update slide numbers for the "privateSave" section initially
-// const privateSaveSwipers = document.querySelectorAll('.private-save .profileSwiper');
-// privateSaveSwipers.forEach(function (element) {
-//     updateSlideNumbers(element.swiper);
-// });
+}
+
+//............................................user post image swipe start..............................
+// Function to initialize Swiper and update slide numbers
+function initializeSwipers() {
+    var swipers = [];
+    var profileSwipers = document.querySelectorAll('.profileSwiper');
+
+    profileSwipers.forEach(function (element) {
+        var swiper = new Swiper(element, {
+            spaceBetween: 30,
+            hashNavigation: {
+                watchState: true,
+            },
+            pagination: {
+                el: element.querySelector(".swiper-pagination"),
+                clickable: true,
+            },
+            on: {
+                slideChange: function () {
+                    updateSlideNumbers(swiper);
+                }
+            },
+        });
+        swipers.push(swiper);
+    });
+
+    // Function to update slide numbers
+    function updateSlideNumbers(swiperInstance) {
+        if (swiperInstance && swiperInstance.slides && swiperInstance.activeIndex !== undefined) {
+            const slides = swiperInstance.slides;
+            const currentSlideIndex = swiperInstance.activeIndex + 1;
+
+            slides.forEach((slide, i) => {
+                const slideNumberElement = slide.querySelector('.slide-number');
+                if (slideNumberElement) {
+                    slideNumberElement.textContent = currentSlideIndex + '/' + slides.length;
+                }
+            });
+        } else {
+            console.error("Swiper instance or slides are undefined.");
+        }
+    }
+
+    swipers.forEach(updateSlideNumbers);
+}
 
 
 //heart like toggle , comment toggle and bookmark saving

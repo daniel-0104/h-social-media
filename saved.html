@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatting . H-social</title>
+    <title>Saved . H-social</title>
 
     <!-- bootstrap css  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     <!-- css -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="message-body" data-page="pageMessage">
+<body data-page="pageSaved">
 
     <!-- nav bar top start  -->
     <nav class="navbar navbar-expand-lg shadow-sm sticky-top nav-bg">
@@ -213,134 +213,146 @@
                 <div class="main-content">
                     <div class="row">
                         <div class="col-lg-8 col-md-8 col-sm-12" id="home-post">
-                            <div class="d-flex justify-content-between align-items-center chatting">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="chatting-back">
-                                        <a href="message.html" class="home-item"><i class="fa-solid fa-arrow-left-long"></i></a>
-                                    </span>
-                                    <div>
-                                        <a href="" class="d-flex mt-2 message-content home-item">
-                                            <span class="image-cropper">
-                                                <img src="image/1654465030-a2b874f2-0fa1-49d8-8e86-b690bdf98a3e.jpeg" alt="avatar" class="profile-pic">
-                                            </span>
-                                            <div class="ms-3 w-100">
-                                                <div class="d-flex justify-content-between align-items-center">
-                                                    <h6>Kim Seok Jin</h6>
-                                                </div>
-                                                <div class="d-flex align-items-center online">
-                                                    <span></span>
-                                                    <label for="">Online</label>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="dropdown">
-                                    <button class="border-0 bg-transparent home-item fs-5" type="button" data-bs-toggle="dropdown">
-                                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    </button>
-                                    <ul class="dropdown-menu home-dark">
-                                        <li><a href="#" class="home-item"><i class="fa-solid fa-video me-3"></i>Video call</a></li>
-                                        <li><a href="#" class="home-item"><i class="fa-solid fa-trash me-3"></i>Delete chat</a></li>
-                                    </ul>
-                                </div>
+                            <div class="d-flex align-items-center">
+                                <span class="me-4">
+                                    <a href="index.html" class="home-item"><i class="fa-solid fa-arrow-left-long"></i></a>
+                                </span>
+                                <h4 class="text-center">All Saved Posts</h4>
                             </div>
                             <hr>
 
-                            <div id="chatting-scroll">
-                                <div id="chatting-content">
-                                    <div class="chatting-text">
-                                        <a href="">
-                                            <span class="image-cropper">
-                                                <img src="image/1654465030-a2b874f2-0fa1-49d8-8e86-b690bdf98a3e.jpeg" alt="avatar" class="profile-pic">
-                                            </span>
-                                        </a>
-                                        <div class="home-item">
-                                            <p class="square left home-dark">HI, i have faced a problem with your software. are you available now</p>
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>3:25PM</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="user-chatting-content">
-                                    <div class="user-text">
-                                        <div class="home-item">
-                                            <p class="square2 left2 home-dark"> i have checked about your query, there is no any problem like that...</p>
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>4:23PM</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="chatting-content">
-                                    <div class="chatting-text">
-                                        <a href="">
-                                            <span class="image-cropper">
-                                                <img src="image/1654465030-a2b874f2-0fa1-49d8-8e86-b690bdf98a3e.jpeg" alt="avatar" class="profile-pic">
-                                            </span>
-                                        </a>
-                                        <div class="home-item">
-                                            <p class="square left home-dark">thank you for your quick reply, i am sending you a link
-                                                <a href="https://github.com/daniel-0104/AYJapanBikesShop">AYJapanBikesShop</a>
-                                            </p>
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>4:31PM</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="user-chatting-content">
-                                    <div class="user-text">
-                                        <div class="home-item">
-                                            <p class="square2 left2 home-dark"> 
-                                                i have checked about your query, there is no any problem like that...
-                                                <img src="image/ay.JPG" alt="" class="w-25 d-block">   
-                                            </p>   
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>4:23PM</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <div id="chatting-content">
-                                    <div class="chatting-text">
-                                        <a href="">
-                                            <span class="image-cropper">
-                                                <img src="image/1654465030-a2b874f2-0fa1-49d8-8e86-b690bdf98a3e.jpeg" alt="avatar" class="profile-pic">
-                                            </span>
-                                        </a>
-                                        <div class="home-item">
-                                            <p class="square left home-dark">HI, i have faced a problem with your software. are you available now</p>
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>3:25PM</span></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="user-chatting-content">
-                                    <div class="user-text">
-                                        <div class="home-item">
-                                            <p class="square2 left2 home-dark"> i have checked about your query, there is no any problem like that...</p>
-                                            <label for=""><i class="fa-regular fa-circle-check me-1"></i><span>4:23PM</span></label>
-                                        </div>
-                                    </div>
-                                </div> -->
+                            <div>
+                                <ul id="saved-grip">
+                                    <li>
+                                        <a href="javascript:void(0)" class="saved-grip-content saved-grip-active home-item" data-element-class="savedTable"><i class="fa-solid fa-border-all"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="saved-grip-content home-item" data-element-class="savedRow"><i class="fa-solid fa-play"></i></a>
+                                    </li>
+                                </ul>
                             </div>
 
-                            <div class="messageBox mt-5 home-dark">
-                                <div class="fileUploadWrapper">
-                                    <label for="file">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 337 337">
-                                            <circle stroke-width="20" stroke="#6c6c6c" fill="none" r="158.5" cy="168.5" cx="168.5"></circle>
-                                            <path stroke-linecap="round" stroke-width="25" stroke="#6c6c6c" d="M167.759 79V259"></path>
-                                            <path stroke-linecap="round" stroke-width="25" stroke="#6c6c6c" d="M79 167.138H259"></path>
-                                        </svg>
-                                        <span class="tooltip">Add an image</span>
-                                    </label>
-                                    <input type="file" id="file" name="file" />
+                            <!-- post saved table start  -->
+                            <div class="post-saved-table">
+                                <a href="">
+                                    <img src="image/3ac7c25d7db05c969127ffa01df4cd0b.jpg" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="image/1364d4459567333ccd4fce1fc0137266.jpg" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="image/2c8f528d4f33e2b81bf7114216efb45e.jpg" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="image/17c1fd0f3355a1bf16903a59a5e3f401.jpg" alt="">
+                                </a>
+                                <a href="">
+                                    <img src="image/b55e9b82b907df2d2b03061747517327.jpg" alt="">
+                                </a>
+                            </div>
+                            <!-- post saved table end  -->
+
+                            <!-- saved post only start  -->
+                            <div class="user-post home-dark post-saved-row">
+                                <div class="user-profile">
+                                    <a href="">
+                                        <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="">
+                                    </a>
+                                    <div>
+                                        <a href="" class="home-item"><h6>BaiLu</h6></a>
+                                        <span>March 23, 2024 | 1:55 PM</span>
+                                    </div>
                                 </div>
-                                <input required="" placeholder="Message..." type="text" id="messageInput" class="home-item"/>
-                                <button id="sendButton">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
-                                        <path fill="none" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path>
-                                        <path stroke-linejoin="round" stroke-linecap="round" stroke-width="33.67" stroke="#6c6c6c" d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"></path>
-                                    </svg>
-                                </button>
-                              </div>
-                              
+                                <div class="profile-content">
+                                    <div class="swiper profileSwiper">
+                                        <div class="swiper-wrapper mb-4 py-2 mt-1" id="profile-img">
+                                            <div class="swiper-slide">
+                                                <span class="slide-number"></span>
+                                                <video src="video/Snaptik.app_7323526444313824520.mp4" controls></video>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                    <div class="profile-like">
+                                        <div>
+                                            <div class="heart-comment">
+                                                <a href=""  class="home-item"><i class="fa-regular fa-heart me-5 heart-link"></i></a>
+                                                <a href="" class="home-item comment-link"><i class="fa-regular fa-comment"></i></a>
+                                            </div>
+                                            <div class="bookmark">
+                                                <a href="" class="home-item"><i class="fa-regular fa-bookmark bookmark-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-view">
+                                        <div class="mb-4">
+                                            <label for="" class="me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">0 like(s)</label>
+                                            <label for="" class="comment-link">0 comment(s)</label>
+                                        </div>
+                                        <div class="users-profile">
+                                            <label for="">No comment yet!</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="user-post home-dark post-saved-row">
+                                <div class="user-profile">
+                                    <a href="">
+                                        <img src="image/FsxGQdHaEAEc6LU.jpg" alt="">
+                                    </a>
+                                    <div>
+                                        <a href="" class="home-item"><h6>Luo Yunxi</h6></a>
+                                        <span>March 23, 2024 | 1:36 PM</span>
+                                    </div>
+                                </div>
+                                <div class="profile-content">
+                                    <div class="swiper profileSwiper">
+                                        <div class="swiper-wrapper mb-4 py-2 mt-1" id="profile-img">
+                                            <div class="swiper-slide">
+                                                <span class="slide-number"></span>
+                                                <img src="image/266c283418e96b9370eeec0925c94b6d.jpg" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="slide-number"></span>
+                                                <img src="image/99e9ea1b6800c8ff79b46486e4ff1cb4.jpg" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="slide-number"></span>
+                                                <img src="image/17c1fd0f3355a1bf16903a59a5e3f401.jpg" alt="">
+                                            </div>
+                                            <div class="swiper-slide">
+                                                <span class="slide-number"></span>
+                                                <img src="image/b55e9b82b907df2d2b03061747517327.jpg" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                    <div class="profile-like">
+                                        <div>
+                                            <div class="heart-comment">
+                                                <a href=""  class="home-item"><i class="fa-regular fa-heart me-5 heart-link"></i></a>
+                                                <a href="" class="home-item comment-link"><i class="fa-regular fa-comment"></i></a>
+                                            </div>
+                                            <div class="bookmark">
+                                                <a href="" class="home-item"><i class="fa-regular fa-bookmark bookmark-link"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-view">
+                                        <div class="mb-4">
+                                            <label for="" class="me-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">0 like(s)</label>
+                                            <label for="" class="comment-link">0 comment(s)</label>
+                                        </div>
+                                        <div class="users-profile">
+                                            <label for="">No comment yet!</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- saved post only end  -->
+
                         </div>
-                        
                         <div class="col-lg-4 col-md-4" id="following-friend">
                             <div class="friends home-dark mb-4">
                                 <div class="d-flex justify-content-between mb-3">
@@ -381,6 +393,60 @@
                                     <div class="ms-3 w-100 d-flex align-items-center justify-content-between" id="follow-Container">
                                         <h6>Zhou Ye</h6>
                                         <button class="btn following-btn">Following</button>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="friends home-dark mb-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5>Suggested</h5>
+                                    <a href="" class="text-decoration-none fw-medium">See All</a>
+                                </div>
+                                <a href="" class="d-flex mb-3 notification home-item">
+                                    <span class="image-cropper">
+                                        <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="avatar" class="profile-pic">
+                                    </span>
+                                    <div class="ms-3 w-100 d-flex align-items-center justify-content-between" id="follow-Container">
+                                        <h6>Bai Lu</h6>
+                                        <button class="btn btn-primary w-50">Follow</button>
+                                    </div>
+                                </a>
+                                <a href="" class="d-flex mb-3 notification home-item">
+                                    <span class="image-cropper">
+                                        <img src="image/2YSBbXZ4h6Ex65B.thumb.1000_0.jpg" alt="avatar" class="profile-pic">
+                                    </span>
+                                    <div class="ms-3 w-100 d-flex align-items-center justify-content-between" id="follow-Container">
+                                        <h6>Tan Taijin</h6>
+                                        <button class="btn btn-primary w-50">Follow</button>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="messages home-dark mb-4">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h5>Messages</h5>
+                                    <a href="" class="text-decoration-none fw-medium">View All</a>
+                                </div>
+                                <a href="" class="d-flex mt-2 notification home-item">
+                                    <span class="image-cropper">
+                                        <img src="image/1654465030-a2b874f2-0fa1-49d8-8e86-b690bdf98a3e.jpeg" alt="avatar" class="profile-pic">
+                                    </span>
+                                    <div class="ms-3 w-100">
+                                        <h6>Kim Seok Jin</h6>
+                                        <div class="d-flex justify-content-between message-text">
+                                            <p>How are you? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, saepe eum. Minus temporibus, voluptatum ipsum sapiente exercitationem eligendi atque libero dignissimos consequatur inventore cumque quidem porro aspernatur corporis, eveniet culpa.</p>
+                                            <label for="" class="text-end">1h</label>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="" class="d-flex mt-2 notification home-item">
+                                    <span class="image-cropper">
+                                        <img src="image/FsxGQdHaEAEc6LU.jpg" alt="avatar" class="profile-pic">
+                                    </span>
+                                    <div class="ms-3 w-100">
+                                        <h6>Luo Yunxi</h6>
+                                        <div class="d-flex justify-content-between message-text">
+                                            <p>Hello! Nice to meet you. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus, saepe eum. Minus temporibus, voluptatum ipsum sapiente exercitationem eligendi atque libero dignissimos consequatur inventore cumque quidem porro aspernatur corporis, eveniet culpa.</p>
+                                            <label for="" class="text-end">Fri</label>
+                                        </div>
                                     </div>
                                 </a>
                             </div>
