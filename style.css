@@ -1992,6 +1992,9 @@ body{
 /* ............................message page end ....................*/
 
 /* ............................ chatting page start ....................*/
+/* #chatting-body{
+    overflow-y: hidden;
+} */
 .chatting-back{
     margin-right: 23px;
 }
@@ -2013,7 +2016,7 @@ body{
 
 /* #chatting-scroll{
     overflow-y: auto;
-    height: 60%;
+    height: 70%;
     padding-right: 20px;
 } */
 #chatting-scroll::-webkit-scrollbar{
@@ -2079,7 +2082,6 @@ body{
     position: relative;
     width: fit-content;
     display: block;
-    float: right;
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 }
