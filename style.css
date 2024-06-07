@@ -1189,6 +1189,10 @@ body{
     border-radius: 50%;
     object-fit: cover;
 }
+.myprofile-content .col-lg-4 a{
+    text-decoration: none;
+    color: black;
+}
 .edit-btn button{
     background-color: var(--grey);
     border: 1px solid var(--noti-bg);
@@ -1602,7 +1606,6 @@ body{
     }
     #video-label{
         margin-top: -10px;
-        /* background-color: red; */
     }
     #video-first-container .pt-1{
         display: block;
@@ -1991,9 +1994,9 @@ body{
 /* ............................message page end ....................*/
 
 /* ............................ chatting page start ....................*/
-#chatting-body{
+/* #chatting-body{
     overflow-y: hidden;
-}
+} */
 .chatting-back{
     margin-right: 23px;
 }
@@ -2017,13 +2020,15 @@ body{
     overflow-y: auto;
     height: 47%;
     padding-right: 20px;
-    /* margin-top: -12px; */
+}
+@media screen and (max-width: 1100px){
+    #chatting-scroll{
+        height: 35%;
+    }
 }
 @media screen and (min-height: 710px) and (max-height: 1200px){
     #chatting-scroll{
-        overflow-y: auto;
         height: 57%;
-        padding-right: 20px;
     }
 }
 #chatting-scroll::-webkit-scrollbar{
@@ -2235,7 +2240,26 @@ body{
     fill: #3c3c3c;
     stroke: white;
   }
-  
+
+/* #chatting-profile-content{
+    text-decoration: none;
+    color: black;
+}
+#chatting-profile-content > img{
+    display: block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: auto;
+}
+#chatting-profile-content2 > div > p{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: 11pt;
+}
+#chatting-profile-content2 > div span{
+    font-weight: 700; 
+} */
 /* ........................... chatting page end ....................*/
 
 /* ........................... saved page start ....................*/

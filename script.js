@@ -791,6 +791,20 @@ else if(currentHTML === 'pageMessage'){
             $('#message-search').toggle('slow');
         });
     });
+
+    function addedElement(){
+        var screenWidth = window.innerWidth;
+        var videoElement = document.getElementById('video');
+
+        if(screenWidth < 740){
+            videoElement.style.display = 'none';
+        }else{
+            videoElement.style.display = 'block';
+        }
+    }
+
+    window.onload = addedElement;
+    window.onresize = addedElement;
 }
 else if(currentHTML === 'pageChatting'){
     function addedElement(){
@@ -804,6 +818,19 @@ else if(currentHTML === 'pageChatting'){
         }else{
             settingElement.style.display = 'none';
             videoElement.style.display = 'block';
+        }
+    }
+
+    window.onload = addedElement;
+    window.onresize = addedElement;
+}
+else if(currentHTML === 'pageSetting'){
+    function addedElement(){
+        var screenWidth = window.innerWidth;
+        var videoElement = document.getElementById('video');
+
+        if(screenWidth < 740){
+            videoElement.style.display = 'none';
         }
     }
 
