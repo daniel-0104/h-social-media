@@ -823,6 +823,17 @@ else if(currentHTML === 'pageChatting'){
 
     window.onload = addedElement;
     window.onresize = addedElement;
+
+    //chatting image view
+    document.addEventListener('DOMContentLoaded',function(){
+        const chattingImgView = document.getElementById('chat-img-view');
+        const imgCloseBtn = document.querySelector('.js-close-btn');
+
+        imgCloseBtn.addEventListener('click',function(){
+            chattingImgView.style.display = 'none';
+        });
+    });
+
 }
 else if(currentHTML === 'pageSetting'){
     function addedElement(){
