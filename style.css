@@ -2241,34 +2241,45 @@ body{
     stroke: white;
   }
 
-#chat-img-view{
-    background-color: rgba(14, 12, 12, 0.875);
-    position: absolute;
+  #chat-img-view {
+    position: fixed;
     z-index: 9999;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(14, 12, 12, 0.875);
 }
-#chat-img-view div{
+#chat-img-view div {
+    width: 100%;
+    height: 100%;
     display: flex;
-    justify-content: right;
+    align-items: center;
+    justify-content: center;
 }
 #chat-img-view img{
     display: block;
     position: absolute;
     margin: auto;
-    /* width: 100%; */
-    /* height: 90%; */
+    max-width: 100%;
+    max-height: 90%;
+    object-fit: contain;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
 #chat-img-view button{
-    margin-right: 15px;
-    margin-top: 20px;
-    background-color: black;
+    position: absolute;
+    top: 3px;
+    right: 8px;
+    background: none;
+    border: none;
     color: white;
+    font-size: 25px;
+    cursor: pointer;
 }
 /* ........................... chatting page end ....................*/
 

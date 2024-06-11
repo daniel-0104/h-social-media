@@ -826,8 +826,16 @@ else if(currentHTML === 'pageChatting'){
 
     //chatting image view
     document.addEventListener('DOMContentLoaded',function(){
+        const chattingImgClick = document.getElementById('chat-img-click');
         const chattingImgView = document.getElementById('chat-img-view');
         const imgCloseBtn = document.querySelector('.js-close-btn');
+        const chatImg = document.querySelector('.js-img-view');
+
+        chattingImgClick.addEventListener('click',function(){
+            const imgSrc = chattingImgClick.src;
+            chatImg.src = imgSrc;
+            chattingImgView.style.display = 'flex';
+        });
 
         imgCloseBtn.addEventListener('click',function(){
             chattingImgView.style.display = 'none';
