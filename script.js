@@ -678,7 +678,7 @@ else if(currentHTML === 'pageVideo'){
                     if (video) {
                         video.pause();
                         video.currentTime = 0;
-                        video.muted = false;
+                        video.muted = true;
                     }
                 });
 
@@ -687,102 +687,97 @@ else if(currentHTML === 'pageVideo'){
                 var videoElement = activeSlide.querySelector('video');
                 if (videoElement) {
                     videoElement.play();
+                    videoElement.muted = false;
                 }
             },
         },
     });
 
-     // Video click event
-     var videoElements = document.querySelectorAll('#vide-page-eg video');
-     var videoSwiperView = document.getElementById('video-swiper');
+    // Add click event listener to play/pause videos within the Swiper
+    swiper.on('click', function() {
+        // Play the video in the active slide
+        var activeSlide = swiper.slides[swiper.activeIndex];
+        var videoElement = activeSlide.querySelector('video');
+        if (videoElement) {
+            if (videoElement.paused) {
+                videoElement.play();
+                videoElement.muted = false;
+            } else {
+                videoElement.pause();
+                videoElement.muted = true;
+            }
+        }
+    });
 
-     videoElements.forEach(function(video) {
-         video.addEventListener('click', function() {
-             // Show Swiper
-             videoSwiperView.style.display = 'block';
+    // Video click event
+    var videoElements = document.querySelectorAll('#vide-page-eg video');
+    var videoSwiperView = document.getElementById('video-swiper');
 
-             // Clear existing slides
-             swiper.removeAllSlides();
+    videoElements.forEach(function(video) {
+        video.addEventListener('click', function() {
+            // Show Swiper
+            videoSwiperView.style.display = 'block';
 
-             // Add clicked video as the first slide and autoplay it
-             swiper.appendSlide(`
+            // Clear existing slides
+            swiper.removeAllSlides();
+
+            // Get the parent element of the clicked video
+            var parentElement = video.closest('.video-page-content');
+            var imgElement = parentElement.querySelector('img');
+            var h6Element = parentElement.querySelector('h6');
+
+            // Add clicked video as the first slide and autoplay it
+            swiper.appendSlide(`
                 <div class="swiper-slide">
-                    <div id="swiper-arrow">
+                    <a href="video.html" id="swiper-arrow">
                         <i class="fa-solid fa-arrow-left-long"></i>
-                    </div>
+                    </a>
                     <div id="swiper-slide-content">
                         <div id="carousel-header">
                             <a href="">
-                                <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="">
-                                <h6>Bai Lu</h6>
+                                <img src="${imgElement.src}" alt="">
+                                <h6>${h6Element.innerHTML}</h6>
                             </a>
                         </div>
                         <video src="${video.src}"></video>
                     </div>
-                 </div>
-             `);
+                </div>
+            `);
 
-             // Add remaining videos to the Swiper
-             videoElements.forEach(function(v) {
-                 if (v.src !== video.src) {
-                     swiper.appendSlide(`
-                         <div class="swiper-slide">
-                            <div id="swiper-arrow">
+            // Add remaining videos to the Swiper
+            videoElements.forEach(function(v) {
+                if (v.src !== video.src) {
+                var vParentElement = v.closest('.video-page-content');
+                var vImgElement = vParentElement.querySelector('img');
+                var vH6Element = vParentElement.querySelector('h6');
+                    swiper.appendSlide(`
+                        <div class="swiper-slide">
+                            <a href="video.html" id="swiper-arrow">
                                 <i class="fa-solid fa-arrow-left-long"></i>
-                            </div>
+                            </a>
                             <div id="swiper-slide-content">
                                 <div id="carousel-header">
                                     <a href="">
-                                        <img src="image/9595b0dca47f0c736a1525f8cc28d9e6.jpg" alt="">
-                                        <h6>Bai Lu</h6>
+                                        <img src="${vImgElement.src}" alt="">
+                                        <h6>${vH6Element.innerHTML}</h6>
                                     </a>
                                 </div>
                                 <video src="${v.src}"></video>
                             </div>
-                         </div>
-                     `);
-                 }
-             });
+                        </div>
+                    `);
+                }
+            });
+            swiper.update();
 
-             // Update Swiper
-             swiper.update();
-
-             // Autoplay the first video
-             var firstVideo = swiper.slides[0].querySelector('video');
-             if (firstVideo) {
+            // Autoplay the first video
+            var firstVideo = swiper.slides[0].querySelector('video');
+            if (firstVideo) {
                 firstVideo.play();
-             }
-         });
-     });
-
-    // Add click event listener to play/pause videos
-document.body.addEventListener('click', function(event) {
-    if (event.target.tagName === 'VIDEO') {
-        var clickedVideo = event.target;
-        var videos = document.querySelectorAll('video');
-        
-        // Pause and mute all videos except the clicked one
-        videos.forEach(function(video) {
-            if (video !== clickedVideo) {
-                video.play();
-                video.muted = true;
-            }
-            else{
-                video.currentTime = 0;
-                // video.muted = false;
+                firstVideo.muted = false;
             }
         });
-        
-        // Toggle play/pause for the clicked video
-        if (clickedVideo.paused) {
-            clickedVideo.play();
-            clickedVideo.muted = false;
-        } else {
-            clickedVideo.pause();
-            clickedVideo.muted = true;
-        }
-    }
-});
+    });
 
 }
 else if(currentHTML === 'pageMessage'){

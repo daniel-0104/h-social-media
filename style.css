@@ -1748,6 +1748,7 @@ body{
 #swiper-arrow{
     position: absolute;
     top: 0;
+    text-decoration: none;
 }
 #swiper-arrow i{
     display: block;
@@ -1778,7 +1779,11 @@ body{
     color: white;
     text-decoration: none;
 }
-#carousel-header img{
+#vpg-pf{
+    display: none;
+}
+#carousel-header img,
+#vpg-pf img{
     display: block;
     width: 45px;
     height: 45px;
