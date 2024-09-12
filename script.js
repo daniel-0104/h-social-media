@@ -171,17 +171,14 @@ if(currentHTML === 'pageIndex'){
             1070: {
                 slidesPerView: 5,
             },
-            1270: {
-                slidesPerView: 6,
+            1220: {
+                slidesPerView: 3,
             },
-            1320: {
+            1270: {
                 slidesPerView: 4,
             },
-            1540: {
+            1560: {
                 slidesPerView: 5,
-            },
-            2000: {
-                slidesPerView: 6,
             }
         }
     });
