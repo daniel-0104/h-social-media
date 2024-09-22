@@ -438,103 +438,105 @@ if(currentHTML === 'pageIndex'){
 }
 else if(currentHTML === 'pageProfile'){
 
-    initializeSwipers();
-    //............................................ profile grip click start ....................................
-    const profileGripLinks = document.querySelectorAll('#profile-grip li a');
-    const userPost = document.getElementsByClassName('user-post');
-    const imageOnly = document.getElementsByClassName('post-image-only');
-    const privateSave = document.getElementsByClassName('private-save');
-
-    // document.querySelector('.profile-grip-content[data-element-class="userPost"]').click();
-    // // Function to save the user's click preference locally
-    // function saveUserClickPreference(preference) {
-    //     localStorage.setItem('userClickPreference', preference);
-    // }
-    // // Function to load the user's click preference from local storage
-    // function loadUserClickPreference() {
-    //     return localStorage.getItem('userClickPreference');
-    // }
-
-    // Function to handle click events on profile grip links
-    function handleClickEvent(event) {
-        event.preventDefault();
-        const clickedElement = event.target.tagName === 'I' ? event.target.parentElement : event.target;
-        const elementClass = clickedElement.dataset.elementClass;
-
-        if (clickedElement.classList.contains('profile-grip-active')) {
-            return;
-        }
-
-        localStorage.setItem('userClick',elementClass);
-
-        for (let p of profileGripLinks) {
-            p.classList.remove('profile-grip-active');
-        }
-
-        clickedElement.classList.add('profile-grip-active');
-
-        for (let u of userPost) {
-            u.style.display = elementClass === 'userPost' ? 'block' : 'none';
-        }
-
-        for (let i of imageOnly) {
-            i.style.display = elementClass === 'imageOnly' ? 'grid' : 'none';
-        }
-
-        for (let p of privateSave) {
-            p.style.display = elementClass === 'privateSave' ? 'block' : 'none';
-        }
-
-        initializeSwipers();
-    }
-
-    // Add click event listener to each profile grip link
-    for (let link of profileGripLinks) {
-        link.addEventListener('click', handleClickEvent);
-    }
-
     document.addEventListener('DOMContentLoaded',function(){
-        const elementClassId = localStorage.getItem('userClick');
-        if(elementClassId){
+        initializeSwipers();
+        //............................................ profile grip click start ....................................
+        const profileGripLinks = document.querySelectorAll('#profile-grip li a');
+        const userPost = document.getElementsByClassName('user-post');
+        const imageOnly = document.getElementsByClassName('post-image-only');
+        const privateSave = document.getElementsByClassName('private-save');
+    
+        // document.querySelector('.profile-grip-content[data-element-class="userPost"]').click();
+        // // Function to save the user's click preference locally
+        // function saveUserClickPreference(preference) {
+        //     localStorage.setItem('userClickPreference', preference);
+        // }
+        // // Function to load the user's click preference from local storage
+        // function loadUserClickPreference() {
+        //     return localStorage.getItem('userClickPreference');
+        // }
+    
+        // Function to handle click events on profile grip links
+        function handleClickEvent(event) {
+            event.preventDefault();
+            const clickedElement = event.target.tagName === 'I' ? event.target.parentElement : event.target;
+            const elementClass = clickedElement.dataset.elementClass;
+    
+            if (clickedElement.classList.contains('profile-grip-active')) {
+                return;
+            }
+    
+            localStorage.setItem('userClick',elementClass);
+    
             for (let p of profileGripLinks) {
                 p.classList.remove('profile-grip-active');
             }
-            if(elementClassId === 'userPost'){
-                profileGripLinks[0].classList.add('profile-grip-active');
-                for (let u of userPost) {
-                    u.style.display = 'block';
+    
+            clickedElement.classList.add('profile-grip-active');
+    
+            for (let u of userPost) {
+                u.style.display = elementClass === 'userPost' ? 'block' : 'none';
+            }
+    
+            for (let i of imageOnly) {
+                i.style.display = elementClass === 'imageOnly' ? 'grid' : 'none';
+            }
+    
+            for (let p of privateSave) {
+                p.style.display = elementClass === 'privateSave' ? 'block' : 'none';
+            }
+    
+            initializeSwipers();
+        }
+    
+        // Add click event listener to each profile grip link
+        for (let link of profileGripLinks) {
+            link.addEventListener('click', handleClickEvent);
+        }
+    
+        document.addEventListener('DOMContentLoaded',function(){
+            const elementClassId = localStorage.getItem('userClick');
+            if(elementClassId){
+                for (let p of profileGripLinks) {
+                    p.classList.remove('profile-grip-active');
                 }
-                for (let i of imageOnly) {
-                    i.style.display = 'none';
-                }
-                for (let p of privateSave) {
-                    p.style.display = 'none';
-                }
-            }else if(elementClassId === 'imageOnly'){
-                profileGripLinks[1].classList.add('profile-grip-active');
-                for (let u of userPost) {
-                    u.style.display = 'none';
-                }
-                for (let i of imageOnly) {
-                    i.style.display = 'grid';
-                }
-                for (let p of privateSave) {
-                    p.style.display = 'none';
-                }
-            }else if(elementClassId === 'privateSave'){
-                profileGripLinks[2].classList.add('profile-grip-active');
-                for (let u of userPost) {
-                    u.style.display = 'none';
-                }
-                for (let i of imageOnly) {
-                    i.style.display = 'none';
-                }
-                for (let p of privateSave) {
-                    p.style.display = 'block';
+                if(elementClassId === 'userPost'){
+                    profileGripLinks[0].classList.add('profile-grip-active');
+                    for (let u of userPost) {
+                        u.style.display = 'block';
+                    }
+                    for (let i of imageOnly) {
+                        i.style.display = 'none';
+                    }
+                    for (let p of privateSave) {
+                        p.style.display = 'none';
+                    }
+                }else if(elementClassId === 'imageOnly'){
+                    profileGripLinks[1].classList.add('profile-grip-active');
+                    for (let u of userPost) {
+                        u.style.display = 'none';
+                    }
+                    for (let i of imageOnly) {
+                        i.style.display = 'grid';
+                    }
+                    for (let p of privateSave) {
+                        p.style.display = 'none';
+                    }
+                }else if(elementClassId === 'privateSave'){
+                    profileGripLinks[2].classList.add('profile-grip-active');
+                    for (let u of userPost) {
+                        u.style.display = 'none';
+                    }
+                    for (let i of imageOnly) {
+                        i.style.display = 'none';
+                    }
+                    for (let p of privateSave) {
+                        p.style.display = 'block';
+                    }
                 }
             }
-        }
-        initializeSwipers();
+            initializeSwipers();
+        });
     });
 
 
